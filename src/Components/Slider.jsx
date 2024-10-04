@@ -35,7 +35,7 @@ const Slider = () => {
                             <h4>₹{slides[currentIndex].finalPrice}
                                 <strike>₹{slides[currentIndex].originalPrice}</strike> 
                             </h4>
-                            <button className='hero-btn'>ShopNow</button>
+                            <button className='hero-btn'>Shop Now</button>
                         </div>
                         <div className="slider-image">
                             <img src={getImageSrc(slides[currentIndex].heroImage)} alt={slides[currentIndex].id} />

@@ -5,7 +5,7 @@ import { faMagnifyingGlass, faCartShopping, faUser } from '@fortawesome/free-sol
 
 const Header = () => {
   return (
-    <nav className="navbar navbar-expand-md" style={{background:"black",position:"sticky",top:0}}>
+    <nav className="navbar navbar-expand-md" style={{background:"black",position:"sticky",top:"0", zIndex:"1"}}>
       <div className="container-fluid mx-5">
         <h2 className="navbar-brand" style={{color:"silver"}}>Tech-Shop</h2>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

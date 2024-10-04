@@ -1,65 +1,91 @@
-
 .hero-section {
     position: relative;
     width: 100%;
     background-color: black;
     color: silver;
     height: auto;
-    font-family: Helvetica, Arial;
-    font-family:Arial, Helvetica, sans-serif;
-
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
 }
-
 
 .slider-content {
     position: relative;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; 
+    align-items: center; 
     width: 100%;
-    padding: 2vw;
-    box-sizing: border-box;
-    
+    padding: 2rem; 
 }
-
 
 .background-text {
     position: absolute;
     color: gray;
-    font-size: 12rem;
-    top: 9rem;
+    font-size: 10vw; 
+    top: 9rem; 
     left: -5rem;
     opacity: 0.09;
     font-weight: bolder;
 }
 
-.slider-info{
+.slider-info {
     width: 100%;
+    
 }
-.slider-info h1{
+
+.slider-info h1 {
     font-weight: bolder;
 }
-.slider-info strike{
+
+.slider-info strike {
     padding: 1rem;
-    color:grey;
+    color: grey;
     font-size: x-large;
 }
 
-.slider-image{
+.slider-image {
     text-align: center;
 }
+
 .slider-image img {
     max-width: 90%;
     height: auto;
-   
 }
 
-.hero-btn{
+
+@media (min-width: 768px) {
+    .slider-content {
+        flex-direction: row; 
+        justify-content: space-between;
+    }
+
+    .background-text {
+        font-size: 12rem; 
+    }
+
+    .slider-info h1 {
+        font-size: 2.5rem; 
+    }
+
+    .slider-info h5 {
+        font-size: 1.5rem; 
+    }
+
+    .hero-btn {
+        padding: 1rem 2rem; 
+    }
+}
+
+.hero-btn {
     background-color: red;
     border: none;
     padding: 0.5rem;
-    width:max-content;
+    width: max-content;
     font-family: sans-serif;
     font-size: medium;
     color: silver;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.hero-btn:hover {
+    background-color: darkred; /* Change color on hover */
 }
