@@ -1,13 +1,18 @@
 import React from "react";
 import {Routes,Route} from "react-router-dom";
-import Slider from "../Components/Slider";
-import FeaturedProducts from "../Components/FeaturedProducts";
+import AllProducts from "../Components/AllProducts";
+import Home from "../Components/Home";
+
+
+
 
 const Routing = () => {
   return (
     <Routes>
-        <Route path='/' element={<Slider/>} />
-        {/* <Route path='/' element={<FeaturedProducts/>} /> */}
+      <Route path="/" exact Component={Home}/>
+       <Route path="/all-products" element={<AllProducts/>}/>
+      
+        
     </Routes>
   )
 }

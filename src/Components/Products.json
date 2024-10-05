@@ -131,11 +131,11 @@
         "tag": "hero-product",
         "tagline": "Give Your Favourite Music A Boost.",
         "heroImage": "./images/sonyXb910n-1.png",
-       " images": [
-            "./images/sonyxb910n-1.png",
-            "./images/sonyxb910n-2.png",
-            "./images/sonyxb910n-3.png",
-            "./images/sonyxb910n-4.png"
+       "images": [
+            "./images/sonyXb910n-1.png",
+            "./images/sonyXb910n-2.png",
+            "./images/sonyXb910n-3.png",
+            "./images/sonyXb910n-4.png"
         ],
        " brand": "Sony",
         "title": "Sony WH-XB910N",
@@ -296,10 +296,10 @@
     {
         "id": 15,
         "images": [
-            "./images/sonych710n-1.png",
-            "./images/sonych710n-2.png",
-            "./images/sonych710n-3.png",
-            "./images/sonych710n-4.png"
+            "./images/sonyCh710n-1.png",
+            "./images/sonyCh710n-2.png",
+            "./images/sonyCh710n-3.png",
+            "./images/sonyCh710n-4.png"
         ],
        " brand": "Sony",
         "title": "Sony WH-CH710N",
@@ -376,10 +376,10 @@
     {
         "id": 19,
         "images": [
-            "./images/sonyxb400-1.png",
-            "./images/sonyxb400-2.png",
-            "./images/sonyxb400-3.png",
-            "./images/sonyxb400-4.png"
+            "./images/sonyXb400-1.png",
+            "./images/sonyXb400-2.png",
+            "./images/sonyXb400-3.png",
+            "./images/sonyXb400-4.png"
         ],
        " brand": "Sony",
         "title": "Sony WI-XB400",
