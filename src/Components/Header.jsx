@@ -2,7 +2,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
-
+import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 const Header = () => {
   return (
     <nav className="navbar navbar-expand-md" style={{background:"black",position:"sticky",top:"0", zIndex:"1"}}>
@@ -19,12 +19,18 @@ const Header = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" style={{color:"silver"}}>
-                <FontAwesomeIcon icon={faCartShopping} className='mx-3' />
-              </a>
+            <OverlayTrigger
+                placement="bottom"
+                delay={{ show: 250, hide: 800 }}
+                overlay={<Tooltip id="cart-tooltip">Cart</Tooltip>}
+            >
+                <a className="nav-link " style={{ color: "silver" }} >
+                    <FontAwesomeIcon icon={faCartShopping} className='mx-3'  />
+                </a>
+            </OverlayTrigger>
             </li>
             <li className="nav-item">
-              <a className="nav-link" style={{color:"silver"}}>
+              <a className="nav-link "  style={{color:"silver"}}>
                 <FontAwesomeIcon icon={faUser} className='mx-3'/>
               </a>
             </li>

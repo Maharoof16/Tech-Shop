@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import productsData from './Products.json'; 
 import './Slider.css'; 
+import { Link } from 'react-router-dom';
 
 const Slider = () => {
     const [slides, setSlides] = useState([]);
@@ -35,7 +36,10 @@ const Slider = () => {
                             <h4>₹{slides[currentIndex].finalPrice}
                                 <strike>₹{slides[currentIndex].originalPrice}</strike> 
                             </h4>
+                            <Link to={`/products/${slides[currentIndex].id}`}>
                             <button className='hero-btn'>Shop Now</button>
+                            </Link>
+                            
                         </div>
                         <div className="slider-image">
                             <img src={getImageSrc(slides[currentIndex].heroImage)} alt={slides[currentIndex].id} />
@@ -43,7 +47,7 @@ const Slider = () => {
                     </div>
                 </div>
             ) : (
-                <div>No data</div>
+                <div></div>
             )}
         </div>
     );

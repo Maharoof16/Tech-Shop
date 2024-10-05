@@ -21,8 +21,11 @@ const TopProducts = () => {
              {topProducts.map((product) => (
                  <div className="col-md-3 mb-4" key={product.id}>
                      <div className="card bg-black text-white">
-                         <img src={product.images && product.images.length > 0 ? getImageSrc(product.images[0]) : ''}  className="card-img-top p-2" 
+                        <Link to={`/products/${product.id}`}>
+                              <img src={getImageSrc(product.images[0])}  className="card-img-top p-2" 
                                         alt={product.title} />
+                        </Link>
+                         
                          <div className="card-body">
                              <h5 className="card-title">{product.title}</h5>
                              <p>{product.info}</p>
@@ -31,13 +34,16 @@ const TopProducts = () => {
                      </div>
                  </div>
              ))}
-             <div className="col-md-3 mb-4">
-                 <Link to="/all-products" className="card text-center"> 
-                     <div className="card-body">
-                         <h5 className="card-title">Browse All Products</h5>
-                     </div>
-                     </Link>
-             </div>
+             {topProducts.length>0?(
+                <div className="col-md-3 mb-4">
+                <Link to="/all-products" className="card text-center bg-black text-white"> 
+                    <div className="card-body">
+                        <h5 className="card-title">Browse All Products</h5>
+                    </div>
+                    </Link>
+            </div>
+              ):(<div></div>)}
+             
          </div>
      </div>):(<div></div>)}
     </>
