@@ -25,10 +25,10 @@ const Slider = () => {
     };
 
     return (
-        <div className="hero-section" onClick={() => setCurrentIndex(prevIndex => (prevIndex + 1) % slides.length)}>
+        <div className="hero-section">
             {slides.length > 0 ? (
                 <div className="container">
-                    <div className="slider-content">
+                    <div className="slider-content mt-5">
                         <div className="slider-info">
                             <h5>{slides[currentIndex].title}</h5>
                             <h1>{slides[currentIndex].tagline}</h1>
@@ -47,7 +47,7 @@ const Slider = () => {
                     </div>
                 </div>
             ) : (
-                <div></div>
+                <div>Loading...</div>
             )}
         </div>
     );

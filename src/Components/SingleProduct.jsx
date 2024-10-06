@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import productData from './Products.json';
 import { useParams } from 'react-router-dom';
 
@@ -17,7 +17,7 @@ const SingleProduct = () => {
     <>
     { Object.keys(product).length ?(
         <div className='container-fluid bg-black text-white'>
-            <div className="row mx-5">
+            <div className="row mx-5 mt-5">
                 <div className="col-md-1 mt-5">
                 <div className="row">
                 {product.images.map((img, index) => (
@@ -54,7 +54,7 @@ const SingleProduct = () => {
             </div>
 
         </div>
-    ):(<div></div>)}
+    ):(<div>Loading...</div>)}
     </>
     
   )

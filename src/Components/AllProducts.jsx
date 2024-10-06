@@ -12,11 +12,11 @@ const AllProducts = () => {
     <>
      {productsData.length>0?(
           <div className="container-fluid bg-black text-white">
-          <div className="row mx-5">
-              <div className="col-md-2">
+          <div className="row mx-5 mt-5">
+              <div className="col-md-2 mt-5">
                   <h5>Filter</h5>
               </div>
-              <div className="col-md-10">
+              <div className="col-md-10 mt-5">
                   <div className="row">
                       {productsData.map(product => (
                           <div className="col-md-4" key={product.id}>
