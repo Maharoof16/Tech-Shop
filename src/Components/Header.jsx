@@ -28,10 +28,14 @@ const NavbarWithModal = () => {
                   delay={{ show: 250, hide: 800 }}
                   overlay={<Tooltip id="cart-tooltip">Cart</Tooltip>}
                 >
+                   <Link to="/cart">
+
                   <a className="nav-link" style={{ color: "silver" }}>
                     <FontAwesomeIcon icon={faCartShopping} className='mx-3' />
                   </a>
+                  </Link>
                 </OverlayTrigger>
+
               </li>
               <li className="nav-item">
                 <OverlayTrigger

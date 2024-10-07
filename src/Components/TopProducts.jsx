@@ -12,7 +12,6 @@ const TopProducts = () => {
     const getImageSrc = (imagePath) => {
         return require(`${imagePath}`);
     };
-    console.log(topProducts)
   return (
     <>
     {productsData.length>0?(
