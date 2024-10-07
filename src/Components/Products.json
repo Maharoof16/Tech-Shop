@@ -10,7 +10,7 @@
             "./images/jbl660nc-3.png",
             "./images/jbl660nc-4.png"
         ],
-       " brand": "JBL",
+       "brand": "JBL",
         "title": "JBL Live 660NC",
         "info": "Wireless Over-Ear NC Headphones",
         "category": "Headphones",
@@ -31,7 +31,7 @@
             "./images/boat518-3.png",
             "./images/boat518-4.png"
         ],
-       " brand": "boAt",
+       "brand": "boAt",
         "title": "boAt Rockerz 518",
         "info": "On-Ear Wireless Headphones",
         "category": "Headphones",
@@ -54,7 +54,7 @@
             "./images/boat131-3.png",
             "./images/boat131-4.png"
         ],
-       " brand": "boAt",
+       "brand": "boAt",
         "title": "boAt Airdopes 131",
         "info": "Wireless In-Ear Earbuds",
         "category": "Earbuds",
@@ -74,7 +74,7 @@
             "./images/boat110-3.png",
             "./images/boat110-4.png"
         ],
-       " brand": "boAt",
+       "brand": "boAt",
         "title": "boAt BassHeads 110",
         "info": "In-Ear Wired Earphones",
         "category": "Earphones",
@@ -94,7 +94,7 @@
             "./images/boat410-3.png",
             "./images/boat410-4.png"
         ],
-       " brand": "boAt",
+       "brand": "boAt",
         "title": "boAt Rockerz 410",
         "info": "Bluetooth & Wired On-Ear Headphones",
         "category": "Headphones",
@@ -114,7 +114,7 @@
             "./images/jbl200bt-3.png",
             "./images/jbl200bt-4.png"
         ],
-       " brand": "JBL",
+       "brand": "JBL",
         "title": "JBL Live 200BT",
         "info": "In-Ear Wireless Neckbands",
         "category": "Neckbands",
@@ -137,7 +137,7 @@
             "./images/sonyXb910n-3.png",
             "./images/sonyXb910n-4.png"
         ],
-       " brand": "Sony",
+       "brand": "Sony",
         "title": "Sony WH-XB910N",
         "info": "Wireless Over-Ear Headphones",
         "category": "Headphones",
@@ -158,7 +158,7 @@
             "./images/jbl760nc-3.png",
             "./images/jbl760nc-4.png"
         ],
-       " brand": "JBL",
+       "brand": "JBL",
         "title": "JBL Tune 760NC",
         "info": "Wireless Over-Ear NC Headphones",
         "category": "Headphones",
@@ -179,7 +179,7 @@
             "./images/boat255r-3.png",
             "./images/boat255r-4.png"
         ],
-       " brand": "boAt",
+       "brand": "boAt",
         "title": "boAt Rockerz 255",
         "info": "In-Ear Wireless Neckbands",
         "category": "Neckbands",
@@ -199,7 +199,7 @@
             "./images/jbl100-3.png",
             "./images/jbl100-4.png"
         ],
-       " brand": "JBL",
+       "brand": "JBL",
         "title": "JBL Wave 100",
         "info": "In-Ear Truly Wireless Earbuds",
         "category": "Earbuds",
@@ -219,7 +219,7 @@
             "./images/sony1000xm4-3.png",
             "./images/sony1000xm4-4.png"
         ],
-       " brand": "Sony",
+       "brand": "Sony",
         "title": "Sony WF-1000XM4",
         "info": "Wireless In-Ear NC Headphones",
         "category": "Earbuds",
@@ -239,7 +239,7 @@
             "./images/boat228-3.png",
             "./images/boat228-4.png"
         ],
-       " brand": "boAt",
+       "brand": "boAt",
         "title": "boAt BassHeads 228",
         "info": "In-Ear Wired Earphones",
         "category": "Earphones",
@@ -260,7 +260,7 @@
             "./images/jbl-endu-3.png",
             "./images/jbl-endu-4.png"
         ],
-       " brand": "JBL",
+       "brand": "JBL",
         "title": "JBL Endurance Run Sports",
         "info": "In-Ear Wired Earphones",
         "category": "Earphones",
@@ -281,7 +281,7 @@
             "./images/boat203-3.png",
             "./images/boat203-4.png"
         ],
-       " brand": "boAt",
+       "brand": "boAt",
         "title": "boAt Airdopes 203",
         "info": "In-Ear Truly Wireless Earbuds",
         "category": "Earbuds",
@@ -301,7 +301,7 @@
             "./images/sonyCh710n-3.png",
             "./images/sonyCh710n-4.png"
         ],
-       " brand": "Sony",
+       "brand": "Sony",
         "title": "Sony WH-CH710N",
         "info": "Wireless Over-Ear NC Headphones",
         "category": "Headphones",
@@ -321,7 +321,7 @@
             "./images/jbl500bt-3.png",
             "./images/jbl500bt-4.png"
         ],
-       " brand": "JBL",
+       "brand": "JBL",
         "title": "JBL Tune 500BT",
         "info": "On-Ear Wireless Headphones",
         "category": "Headphones",
@@ -341,7 +341,7 @@
             "./images/boat381-3.png",
             "./images/boat381-4.png"
         ],
-       " brand": "boAt",
+       "brand": "boAt",
         "title": "boAt Airdopes 381",
         "info": "In-Ear Wireless Earbuds",
         "category": "Earbuds",
@@ -361,7 +361,7 @@
             "./images/sony-ex14ap-3.png",
             "./images/sony-ex14ap-4.png"
         ],
-       " brand": "Sony",
+       "brand": "Sony",
         "title": "Sony MDR-EX14AP",
         "info": "In-Ear Wired Earphones",
         "category": "Earphones",
@@ -381,7 +381,7 @@
             "./images/sonyXb400-3.png",
             "./images/sonyXb400-4.png"
         ],
-       " brand": "Sony",
+       "brand": "Sony",
         "title": "Sony WI-XB400",
         "info": "Wireless Extra Bass In-Ear Neckbands",
         "category": "Neckbands",
