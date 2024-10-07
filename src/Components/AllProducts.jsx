@@ -9,6 +9,7 @@ const AllProducts = () => {
     const [products, setProducts] = useState(productsData); 
     const [selectedBrand, setBrands] = useState([]);
     const [selectedCategory,setCategories]=useState([]);
+    const[priceRange,setRange]=useState(19990);
 
     const handleBrand = (brand) => {
         setBrands((prev) =>
@@ -21,6 +22,10 @@ const AllProducts = () => {
             prev.includes(category) ? prev.filter((item) => item !== category) : [...prev, category]
         );
     }
+
+    const handlePriceChange = (e) => {
+        setRange(Number(e.target.value));
+    };
 
     useEffect(() => {
         let filteredProducts = allProducts;
@@ -35,9 +40,10 @@ const AllProducts = () => {
                 selectedCategory.includes(product.category)
             );
         }
-
+        
+       filteredProducts=filteredProducts.filter((product)=>product.finalPrice<=priceRange)
         setProducts(filteredProducts);
-    }, [selectedBrand, selectedCategory,allProducts]);
+    }, [allProducts,selectedBrand, selectedCategory,priceRange]);
     
     const getImageSrc = (imagePath) => {
         return require(`${imagePath}`);
@@ -71,6 +77,10 @@ const AllProducts = () => {
             <label className="form-check-label" htmlFor={product.label}>{product.label}</label>
           </div>
         ))}
+
+        <h3>Price</h3>
+        <label class="form-label" for="range">{priceRange}</label>
+        <input type="range" class="form-range" min="449" max="19990"  step="500" value={priceRange} onChange={handlePriceChange} id='range'></input>
                 </div>  
               </div>
               <div className="col-md-10 mt-5" >
@@ -83,7 +93,7 @@ const AllProducts = () => {
                             </Link>
                                   <div className="card-body">
                                       <h5 className="card-title">{product.title}</h5>
-                                      <p className="card-text">{product.price}</p>
+                                      <p className="card-text">{product.finalPrice}</p>
                                       <button className="btn btn-danger">Add to Cart</button>
                                   </div>
                               </div>
