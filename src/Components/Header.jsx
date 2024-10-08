@@ -25,7 +25,7 @@ const NavbarWithModal = () => {
               <li className="nav-item">
                 <OverlayTrigger
                   placement="bottom"
-                  delay={{ show: 250, hide: 800 }}
+                  delay={{ show: 250, hide: 400 }}
                   overlay={<Tooltip id="cart-tooltip">Cart</Tooltip>}
                 >
                    <Link to="/cart">
