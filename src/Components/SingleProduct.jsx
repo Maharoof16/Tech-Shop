@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import productData from './Products.json';
+import productData from '../Assets/json/Products.json';
 import { useParams } from 'react-router-dom';
 
 const SingleProduct = () => {

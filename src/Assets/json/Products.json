@@ -3,8 +3,8 @@
         "id": 1,
         "tag": "hero-product",
         "tagline": "Keep The Noise Out, Or In. You Choose.",
-        "heroImage": "./images/jbl660nc-1.png",
-        "images": [
+        "heroImage":"./images/jbl660nc-1.png",
+        "images":[
             "./images/jbl660nc-1.png",
             "./images/jbl660nc-2.png",
             "./images/jbl660nc-3.png",

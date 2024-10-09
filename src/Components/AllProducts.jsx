@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from 'react';
-import productsData from './Products.json';
+import productsData from '../Assets/json/Products.json';
 import { Link } from 'react-router-dom';
-import filterData from "./FilterData.json";
+import filterData from "../Assets/json/FilterData.json";
 
 
 const AllProducts = () => {

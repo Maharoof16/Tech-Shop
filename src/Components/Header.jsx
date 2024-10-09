@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
-const NavbarWithModal = () => {
+const Header = () => {
   return (
     <>
     <nav className="navbar navbar-expand-md" style={{ background: "black", position: "fixed", top: "0", width: "100%", zIndex: 1 }}>
@@ -26,16 +26,13 @@ const NavbarWithModal = () => {
                 <OverlayTrigger
                   placement="bottom"
                   delay={{ show: 250, hide: 400 }}
-                  overlay={<Tooltip id="cart-tooltip">Cart</Tooltip>}
-                >
+                  overlay={<Tooltip id="cart-tooltip">Cart</Tooltip>}>
                    <Link to="/cart">
-
                   <a className="nav-link" style={{ color: "silver" }}>
                     <FontAwesomeIcon icon={faCartShopping} className='mx-3' />
                   </a>
                   </Link>
                 </OverlayTrigger>
-
               </li>
               <li className="nav-item">
                 <OverlayTrigger
@@ -50,9 +47,7 @@ const NavbarWithModal = () => {
                         <hr />
                         <p>Please Login</p>
                       </div>
-                    </Tooltip>
-                  }
-                >
+                    </Tooltip>}>
                   <a className="nav-link" style={{ color: "silver" }}>
                     <FontAwesomeIcon icon={faUser} className='mx-3' />
                   </a>
@@ -70,8 +65,7 @@ const NavbarWithModal = () => {
           <div className="modal-header">
             <h5 className="modal-title" id="exampleModalLabel" style={{ color: "lightgray" }}>Login</h5>
             <button className="btn-close" data-bs-dismiss="modal" aria-label="Close"
-            ></button>
-            
+            ></button> 
           </div>
 
           <div className="modal-body">
@@ -135,4 +129,4 @@ const NavbarWithModal = () => {
   );
 };
 
-export default NavbarWithModal;
+export default Header;

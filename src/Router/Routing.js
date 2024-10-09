@@ -1,22 +1,18 @@
 import React from "react";
 import {Routes,Route} from "react-router-dom";
-import Home from "../Components/Home";
-import SingleProduct from "../Components/SingleProduct";
-import AllProducts from "../Components/AllProducts";
-import Cart from "../Components/Cart";
-
-
-
+import Home from "../Pages/Home";
+import FilterProducts from "../Pages/FilterProducts";
+import SpecificProduct from "../Pages/SpecificProduct";
+import ProductCart from "../Pages/ProductCart";
 
 
 const Routing = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home/>}/>
-      <Route path="/cart" element={<Cart/>}/>
-      <Route path="/products/:id" element={<SingleProduct/>}/>
-      <Route path="/all-products" element={<AllProducts/>}/>
-
+      <Route path="/" exact Component={Home}/>
+      <Route path="/cart" exact Component={ProductCart}/>
+      <Route path="/products/:id" exact Component={SpecificProduct}/> 
+      <Route path="/all-products" exact Component={FilterProducts}/>  
     </Routes>
   )
 }
