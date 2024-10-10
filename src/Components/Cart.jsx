@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
-import { removeFromCart } from '../Redux/ActionCreator';
+import { decrementQuantity, incrementQuantity, removeFromCart } from '../Redux/ActionCreator';
 
 const Cart = () => {
   const cart_data=useSelector((state)=>state.productData.cartData)
@@ -18,7 +18,7 @@ const Cart = () => {
       <div className='container mt-5'>
         {cart_data.length>0?(
           <div className='row mt-5'>
-             <div className='col-md-7 overflow-auto' style={{maxHeight:"100vh"}}>
+             <div className='col-md-7 overflow-auto bg-secondary' style={{maxHeight:"100vh"}}>
             {cart_data.map((product)=>(
                 <div className="row mt-5">
                   <div className="col-md-4">
@@ -27,6 +27,11 @@ const Cart = () => {
                   <div className="col-md-8">
                     <h5>{product.title} {product.info}</h5>
                     <h5>{product.finalPrice} <strike>{product.originalPrice}</strike></h5>
+                    <div className="quantity-buttons">
+                      <button className='btn increment' onClick={()=>dispatch(incrementQuantity(product.id))}>plus</button>
+                      <p>{product.quantity}</p>
+                      <button className='btn deccrement' onClick={()=>dispatch(decrementQuantity(product.id))}>minus</button>
+                    </div>
                     <span onClick={()=>dispatch(removeFromCart(product.id))}><FontAwesomeIcon icon={faTrashCan} /></span>
                   </div>
                 </div>
