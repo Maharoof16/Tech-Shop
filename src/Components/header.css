@@ -1,0 +1,17 @@
+.navbar-custom {
+    background: black;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  .navbar-brand {
+    color: silver;
+  }
+  
+  .nav-link {
+    color: silver;
+  }
+  
+  

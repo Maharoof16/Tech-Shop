@@ -1,10 +1,35 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
-
+import './header.css';
+import productsData from '../Assets/json/Products.json';
 const Header = () => {
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    if (value) {
+      const filtered = productsData.filter(product =>
+        product.title.toLowerCase().includes(value.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+    } else {
+      setFilteredProducts([]);
+    }
+  };
+  
+
+  const clearSearch = () => {
+    setSearchTerm('');
+    setFilteredProducts([]);
+  };
+
   return (
     <>
     <nav className="navbar navbar-expand-md" style={{ background: "black", position: "fixed", top: "0", width: "100%", zIndex: 1 }}>
@@ -18,9 +43,11 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a className="nav-link" style={{ color: "silver" }}>
+                <OverlayTrigger placement='bottom-end' delay={{show:250,hide:400}} overlay={<Tooltip id="search-tooltip">search</Tooltip>}>
+                <a className="nav-link" style={{ color: "silver" }} data-bs-toggle='modal' data-bs-target='#searchbarModal'>
                   <FontAwesomeIcon icon={faMagnifyingGlass} className='mx-3' />
                 </a>
+                </OverlayTrigger>
               </li>
               <li className="nav-item">
                 <OverlayTrigger
@@ -28,7 +55,7 @@ const Header = () => {
                   delay={{ show: 250, hide: 400 }}
                   overlay={<Tooltip id="cart-tooltip">Cart</Tooltip>}>
                    <Link to="/cart">
-                  <a className="nav-link" style={{ color: "silver" }}>
+                  <a className="nav-link" style={{ color: "silver" }} >
                     <FontAwesomeIcon icon={faCartShopping} className='mx-3' />
                   </a>
                   </Link>
@@ -57,6 +84,30 @@ const Header = () => {
           </div>
         </div>
       </nav>
+      
+
+      <div className="modal" id="searchbarModal" tabIndex="-1" aria-labelledby="searchbarModalLabel" aria-hidden="true" style={{ zIndex: 2000 }}>
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <input type="text" className='form-control' placeholder="Search..."
+                value={searchTerm}
+                onChange={handleSearchChange}/>
+           {filteredProducts.length > 0 && (
+                <ul className="list-group mt-2">
+                  {filteredProducts.map(product => (
+                    <Link to={`/products/${product.id}`}>
+                    <li key={product.id} className="list-group-item" style={{ backgroundColor: "#2c2c2c", color: "silver" }} onClick={clearSearch} data-bs-dismiss='modal'>
+                      {product.title}
+                    </li>
+                    </Link>
+                  ))}
+                </ul>
+              )}
+          </div>
+          </div>
+          </div>
+
+     
 
       
       <div className="modal" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{ zIndex: 1051 }}>
