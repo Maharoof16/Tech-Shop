@@ -4,6 +4,7 @@
     color: silver;
     height: auto;
     font-family: Arial, Helvetica, sans-serif;
+    user-select: none;
 }
 
 .slider-content {
@@ -40,6 +41,7 @@
 .slider-image {
     text-align: center;
     z-index: 2;
+    pointer-events: none;
 }
 
 .slider-image img {

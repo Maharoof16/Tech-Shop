@@ -21,6 +21,7 @@ export const Reducer=(state=initialState,action)=>{
             }else{
                 return{...state,cartData:[...state.cartData,action.payload]};
             };
+            break
         case "REMOVE_FROM_CART":
             const filterProduct=state.cartData.filter((cartProduct)=>cartProduct.id!==action.payload);
             return{

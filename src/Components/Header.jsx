@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
-import './header.css';
 import productsData from '../Assets/json/Products.json';
 const Header = () => {
 
@@ -44,9 +43,7 @@ const Header = () => {
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
                 <OverlayTrigger placement='bottom-end' delay={{show:250,hide:400}} overlay={<Tooltip id="search-tooltip">search</Tooltip>}>
-                <a className="nav-link" style={{ color: "silver" }} data-bs-toggle='modal' data-bs-target='#searchbarModal'>
-                  <FontAwesomeIcon icon={faMagnifyingGlass} className='mx-3' />
-                </a>
+                  <FontAwesomeIcon icon={faMagnifyingGlass} className="nav-link" style={{ color: "silver" }} data-bs-toggle='modal' data-bs-target='#searchbarModal' />
                 </OverlayTrigger>
               </li>
               <li className="nav-item">
@@ -55,9 +52,7 @@ const Header = () => {
                   delay={{ show: 250, hide: 400 }}
                   overlay={<Tooltip id="cart-tooltip">Cart</Tooltip>}>
                    <Link to="/cart">
-                  <a className="nav-link" style={{ color: "silver" }} >
-                    <FontAwesomeIcon icon={faCartShopping} className='mx-3' />
-                  </a>
+                    <FontAwesomeIcon icon={faCartShopping} className="nav-link" style={{ color: "silver" }} />
                   </Link>
                 </OverlayTrigger>
               </li>
@@ -75,9 +70,7 @@ const Header = () => {
                         <p>Please Login</p>
                       </div>
                     </Tooltip>}>
-                  <a className="nav-link" style={{ color: "silver" }}>
-                    <FontAwesomeIcon icon={faUser} className='mx-3' />
-                  </a>
+                    <FontAwesomeIcon icon={faUser} className="nav-link" style={{ color: "silver" }} />
                 </OverlayTrigger>
               </li>
             </ul>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSwipeable } from 'react-swipeable';
 import productsData from '../Assets/json/Products.json'; 
 import { Link } from 'react-router-dom';
 import "./HeroSlider.css";
@@ -13,14 +14,38 @@ const HeroSlider = () => {
     }, []);
 
     useEffect(() => {
-        const interval=setInterval(() => {
+        const interval = setInterval(() => {
             setCurrentIndex(previousIndex => (previousIndex + 1) % heroProducts.length);
-        },5000); 
+        }, 5000); 
         return () => clearInterval(interval); 
     }, [heroProducts.length]);
 
+    const handleSwipeLeft = () => {
+        setCurrentIndex(previousIndex => (previousIndex === 0 ? heroProducts.length - 1 : previousIndex - 1));
+    };
+
+    const handleSwipeRight = () => {
+        
+        setCurrentIndex(previousIndex => (previousIndex + 1) % heroProducts.length);
+    };
+
+    const swipeHandlers = useSwipeable({
+        onSwipedLeft: handleSwipeLeft,
+        onSwipedRight: handleSwipeRight,
+        preventDefaultTouchmoveEvent: true,
+        trackMouse: true
+    });
+
+    const handleClick = (direction) => {
+        if (direction === 'left') {
+            handleSwipeLeft();
+        } else {
+            handleSwipeRight();
+        }
+    };
+
     return (
-        <div className="hero-section">
+        <div className="hero-section" {...swipeHandlers} onClick={() => handleClick('right')}>
             {heroProducts.length > 0 ? (
                 <div className="container">
                     <div className="slider-content my-5">
