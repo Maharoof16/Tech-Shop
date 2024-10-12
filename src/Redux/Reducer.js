@@ -1,5 +1,5 @@
 const initialState={
-    cartData:[],
+    cartData: JSON.parse(localStorage.getItem('cartData')) || [],
 };
 
 export const Reducer=(state=initialState,action)=>{
@@ -8,34 +8,41 @@ export const Reducer=(state=initialState,action)=>{
             const existingProduct = state.cartData.find(
                 (item) => item.id === action.payload.id
             );
+            
+            let updatedCartData;
 
             if (existingProduct) {
-                if (existingProduct.quantity<5){
-                    const productQuantity = state.cartData.map((item) =>
+                if (existingProduct.quantity < 5) {
+                    updatedCartData = state.cartData.map((item) =>
                         item.id === action.payload.id
                             ? { ...item, quantity: item.quantity + 1 }
                             : item
                     );
-                        return { ...state, cartData: productQuantity };
+                } else {
+                    updatedCartData = state.cartData; // No change
                 }
-            }else{
-                return{...state,cartData:[...state.cartData,action.payload]};
+            } else {
+                updatedCartData = [...state.cartData, action.payload];
             };
-            break
+            localStorage.setItem('cartData', JSON.stringify(updatedCartData));
+            return { ...state, cartData: updatedCartData };
+            
         case "REMOVE_FROM_CART":
             const filterProduct=state.cartData.filter((cartProduct)=>cartProduct.id!==action.payload);
+            localStorage.setItem('cartData', JSON.stringify(filterProduct));
             return{
                 ...state,cartData:filterProduct,
             }
 
         case "INCREMENT_QUANTITY":
-            return{...state,cartData:state.cartData.map((product)=>
+            const increment=state.cartData.map((product)=>
                 product.id===action.payload && product.quantity<5 ? {...product,quantity:product.quantity+1} : product
             )
-        };
+            localStorage.setItem('cartData', JSON.stringify(increment));
+            return{...state,cartData:increment};
         
-        case "DECREMENT_QUANTITY": 
-            return{...state,cartData:state.cartData.map(product=>{
+        case "DECREMENT_QUANTITY":
+            const decrement= state.cartData.map(product=>{
                 if(product.id===action.payload){
                     if (product.quantity>1){
                         return{...product,quantity:product.quantity-1}
@@ -45,10 +52,13 @@ export const Reducer=(state=initialState,action)=>{
                 }
                 return product;
             }).filter(product=>product!=null)
-            };
+            localStorage.setItem('cartData', JSON.stringify(decrement));
+            return{...state,cartData:decrement};
                 
 
         default:
             return state;
     }
 };
+
+ 

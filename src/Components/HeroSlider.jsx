@@ -36,16 +36,8 @@ const HeroSlider = () => {
         trackMouse: true
     });
 
-    const handleClick = (direction) => {
-        if (direction === 'left') {
-            handleSwipeLeft();
-        } else {
-            handleSwipeRight();
-        }
-    };
-
     return (
-        <div className="hero-section" {...swipeHandlers} onClick={() => handleClick('right')}>
+        <div className="hero-section" {...swipeHandlers} >
             {heroProducts.length > 0 ? (
                 <div className="container">
                     <div className="slider-content my-5">

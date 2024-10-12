@@ -50,23 +50,24 @@ const TopProducts = () => {
          <div className="row my-5">
              {products.map((product) => (
                  <div className="col-md-3 mb-4" key={product.id}>
-                     <div className="card bg-black text-white border-secondary">
+                     <div className="card bg-black text-white border-secondary" >
                         <Link to={`/products/${product.id}`}>
-                              <img src={require(`${product.images[0]}`)}  className="card-img-top p-2" 
+                              <img src={require(`${product.images[0]}`)}  className="card-img-top p-3" style={{backgroundColor:"#121212"}} 
                                         alt={product.title} />
                         </Link>
-                         <div className="card-body">
+                         <div className="card-body " >
                              <h5 className="card-title">{product.title}</h5>
                              <p>{product.info}</p>
-                            <h6>₹{product.finalPrice}<strike>₹{product.originalPrice}</strike></h6>
-                            <button className= "btn btn-danger" onClick={()=>dispatch(addToCart(product))}>Add to cart</button>
+                             <hr />
+                            <h6 className='pb-2'>₹{product.finalPrice}<strike className='px-2'>₹{product.originalPrice}</strike></h6>
+                            <button className= "btn text-white " style={{backgroundColor:"red",width:"100%"}}  onClick={()=>dispatch(addToCart(product))}>Add to cart</button>
                          </div>
                      </div>
                  </div>
              ))}
              {products.length>0?(
                 <div className="col-md-3 mb-4">
-                <Link to="/all-products" className="card text-center bg-black text-white"> 
+                <Link to="/all-products" className="card text-center bg-black text-white border-secondary" > 
                     <div className="card-body">
                         <h5 className="card-title">Browse All Products</h5>
                     </div>

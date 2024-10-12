@@ -1,14 +1,16 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import productsData from '../Assets/json/Products.json';
-const Header = () => {
+import { cartCount } from '../Redux/Selector';
+import { useSelector } from 'react-redux';
 
+const Header = () => {
+  const count = useSelector(cartCount);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
-
 
   const handleSearchChange = (e) => {
     const value = e.target.value;
@@ -22,7 +24,6 @@ const Header = () => {
       setFilteredProducts([]);
     }
   };
-  
 
   const clearSearch = () => {
     setSearchTerm('');
@@ -31,145 +32,99 @@ const Header = () => {
 
   return (
     <>
-    <nav className="navbar navbar-expand-md" style={{ background: "black", position: "fixed", top: "0", width: "100%", zIndex: 1 }}>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div className="container-fluid mx-5">
-          <Link to="/" style={{ textDecoration: 'none' }}>
-            <h2 className="navbar-brand" style={{ color: "silver" }}>Tech-Shop</h2>
-          </Link>
+          <Link to="/" className="navbar-brand">Tech-Shop</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <OverlayTrigger placement='bottom-end' delay={{show:250,hide:400}} overlay={<Tooltip id="search-tooltip">search</Tooltip>}>
-                  <FontAwesomeIcon icon={faMagnifyingGlass} className="nav-link" style={{ color: "silver" }} data-bs-toggle='modal' data-bs-target='#searchbarModal' />
+                <OverlayTrigger placement='bottom-end' delay={{ show: 250, hide: 400 }} overlay={<Tooltip id="search-tooltip">Search</Tooltip>}>
+                  <FontAwesomeIcon icon={faMagnifyingGlass} className="nav-link" data-bs-toggle='modal' data-bs-target='#searchbarModal' />
                 </OverlayTrigger>
               </li>
               <li className="nav-item">
-                <OverlayTrigger
-                  placement="bottom"
-                  delay={{ show: 250, hide: 400 }}
-                  overlay={<Tooltip id="cart-tooltip">Cart</Tooltip>}>
-                   <Link to="/cart">
-                    <FontAwesomeIcon icon={faCartShopping} className="nav-link" style={{ color: "silver" }} />
+                <OverlayTrigger placement="bottom" delay={{ show: 250, hide: 400 }} overlay={<Tooltip id="cart-tooltip">Cart</Tooltip>}>
+                  <Link to="/cart" className="nav-link position-relative">
+                    <FontAwesomeIcon icon={faCartShopping} />
+                    {count > 0 && <span className="badge bg-danger position-absolute top-0 start-100 translate-middle">{count}</span>}
                   </Link>
                 </OverlayTrigger>
               </li>
               <li className="nav-item">
-                <OverlayTrigger
-                  placement="bottom-end"
-                  delay={{ show: 250, hide: 800 }}
-                  overlay={
-                    <Tooltip id="user-tooltip">
-                      <div>
-                        <h5>Hello!</h5>
-                        <p>Access account and manage orders</p>
-                        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Login/Signup</button>
-                        <hr />
-                        <p>Please Login</p>
-                      </div>
-                    </Tooltip>}>
-                    <FontAwesomeIcon icon={faUser} className="nav-link" style={{ color: "silver" }} />
+                <OverlayTrigger placement="bottom-end" delay={{ show: 250, hide: 800 }} overlay={
+                  <Tooltip id="user-tooltip">
+                    <div>
+                      <h5>Hello!</h5>
+                      <p>Access account and manage orders</p>
+                      <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Login/Signup</button>
+                      <hr />
+                      <p>Please Login</p>
+                    </div>
+                  </Tooltip>
+                }>
+                  <FontAwesomeIcon icon={faUser} className="nav-link" />
                 </OverlayTrigger>
               </li>
             </ul>
           </div>
         </div>
       </nav>
-      
 
       <div className="modal" id="searchbarModal" tabIndex="-1" aria-labelledby="searchbarModalLabel" aria-hidden="true" style={{ zIndex: 2000 }}>
-      <div className="modal-dialog">
-        <div className="modal-content">
-          <input type="text" className='form-control' placeholder="Search..."
-                value={searchTerm}
-                onChange={handleSearchChange}/>
-           {filteredProducts.length > 0 && (
-                <ul className="list-group mt-2">
-                  {filteredProducts.map(product => (
-                    <Link to={`/products/${product.id}`}>
-                    <li key={product.id} className="list-group-item" style={{ backgroundColor: "#2c2c2c", color: "silver" }} onClick={clearSearch} data-bs-dismiss='modal'>
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <input type="text" className='form-control' placeholder="Search..."
+              value={searchTerm}
+              onChange={handleSearchChange} />
+            {filteredProducts.length > 0 && (
+              <ul className="list-group mt-2">
+                {filteredProducts.map(product => (
+                  <Link to={`/products/${product.id}`} key={product.id}>
+                    <li className="list-group-item" style={{ backgroundColor: "#2c2c2c", color: "silver" }} onClick={clearSearch} data-bs-dismiss='modal'>
                       {product.title}
                     </li>
-                    </Link>
-                  ))}
-                </ul>
-              )}
-          </div>
-          </div>
-          </div>
-
-     
-
-      
-      <div className="modal" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{ zIndex: 1051 }}>
-      <div className="modal-dialog">
-        <div className="modal-content" style={{ backgroundColor: "#1b1b1b"}}>
-          <div className="modal-header">
-            <h5 className="modal-title" id="exampleModalLabel" style={{ color: "lightgray" }}>Login</h5>
-            <button className="btn-close" data-bs-dismiss="modal" aria-label="Close"
-            ></button> 
-          </div>
-
-          <div className="modal-body">
-            <form>
-              <input type="email" className="form-control mt-3" placeholder="Email" name="email"  style={{backgroundColor: "#2c2c2c"}}/>
-              <input type="password" className="form-control mt-3" placeholder="Password" name="password"
-                style={{
-                  backgroundColor: "#2c2c2c"
-                }}
-              />
-              <button
-                className="btn form-control mt-3"
-                style={{ backgroundColor: "#ff2e2e", color: "white" }}
-              >
-                Login
-              </button>
-
-              <div className="d-flex justify-content-between mt-3">
-                <button
-                  type="button"
-                  className="btn"
-                  style={{
-                    backgroundColor: "#3b5998",
-                    color: "white",
-                    width: "32%",
-                  }}
-                >
-                  Facebook
-                </button>
-                <button
-                  type="button"
-                  className="btn"
-                  style={{
-                    backgroundColor: "#db4437",
-                    color: "white",
-                    width: "32%",
-                  }}
-                >
-                  Google
-                </button>
-                <button
-                  type="button"
-                  className="btn"
-                  style={{
-                    backgroundColor: "#00acee",
-                    color: "white",
-                    width: "32%",
-                  }}
-                >
-                  Twitter
-                </button>
-              </div>
-            </form>
+                  </Link>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </div>
-    </div>
 
+      <div className="modal" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{ zIndex: 1051 }}>
+        <div className="modal-dialog">
+          <div className="modal-content" style={{ backgroundColor: "#1b1b1b" }}>
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel" style={{ color: "lightgray" }}>Login</h5>
+              <button className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              <form>
+                <input type="email" className="form-control mt-3" placeholder="Email" name="email" style={{ backgroundColor: "#2c2c2c" }} />
+                <input type="password" className="form-control mt-3" placeholder="Password" name="password" style={{ backgroundColor: "#2c2c2c" }} />
+                <button className="btn form-control mt-3" style={{ backgroundColor: "#ff2e2e", color: "white" }}>
+                  Login
+                </button>
+                <div className="d-flex justify-content-between mt-3">
+                  <button type="button" className="btn" style={{ backgroundColor: "#3b5998", color: "white", width: "32%" }}>
+                    Facebook
+                  </button>
+                  <button type="button" className="btn" style={{ backgroundColor: "#db4437", color: "white", width: "32%" }}>
+                    Google
+                  </button>
+                  <button type="button" className="btn" style={{ backgroundColor: "#00acee", color: "white", width: "32%" }}>
+                    Twitter
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
-      
   );
 };
 

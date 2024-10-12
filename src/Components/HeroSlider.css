@@ -9,7 +9,8 @@
 
 .slider-content {
     display: flex;
-    flex-direction: column; 
+    flex-direction: row; 
+        justify-content: space-between; 
     align-items: center; 
     width: 100%;
     padding: 2% 1.5%; 
@@ -21,6 +22,9 @@
     font-size: 10vw; 
     opacity: 0.2;
     font-weight: bolder;
+    font-size: 13rem; 
+        top: 12rem;
+        left: 1rem;
 }
 
 .slider-info {
@@ -29,7 +33,7 @@
 
 .slider-info h1 {
     font-weight: bolder;
-    font-size: 5vw; 
+    font-size: 2.5rem; 
 }
 
 .slider-info strike {
@@ -49,26 +53,8 @@
     max-width: 90%; 
     height: auto;
 }
-
-@media (min-width: 768px) {
-    .slider-content {
-        flex-direction: row; 
-        justify-content: space-between;
-    }
-
-    .background-text {
-        font-size: 13rem; 
-        top: 12rem;
-        left: 1rem;
-    }
-
-    .slider-info h1 {
-        font-size: 2.5rem; 
-    }
-
-    .slider-info h5 {
-        font-size: 1.5rem; 
-    }
+.slider-info h5 {
+    font-size: 1.5rem; 
 }
 
 .hero-btn {
@@ -96,19 +82,6 @@
     background-color: red;
 }
 
-@media (max-width: 768px) {
-    .hero-btn {
-        width: 100%; 
-    }
-
-    .slider-info h1 {
-        font-size: 5vw; 
-    }
-
-    .slider-info h5 {
-        font-size: 3vw; 
-    }
-}
 .filter-buttons .btn{
     color: white;
 }
