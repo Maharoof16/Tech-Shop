@@ -4,11 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan,faMinus,faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
 import { decrementQuantity, incrementQuantity, removeFromCart } from '../Redux/ActionCreator';
+import { cartCount, totalFinalPrice, totalOriginalPrice} from '../Redux/Selector'; 
 
 const Cart = () => {
   const cart_data=useSelector((state)=>state.productData.cartData)
   const dispatch=useDispatch();
-  console.log(cart_data)
+  console.log(cart_data);
+  const totalOP=useSelector(totalOriginalPrice);
+  const count=useSelector(cartCount);
+  const totalFP=useSelector(totalFinalPrice)
 
   const getImageSrc=(imagePath)=>{
     return require(`${imagePath}`);
@@ -39,7 +43,10 @@ const Cart = () => {
               ))}
              </div>
              <div className="col-md-4">
-              <h4>Order Summary</h4>
+              <h4>Order Summary ({count})</h4>
+              <h6>Original Price <span className='mx-5'>₹{totalOP}</span></h6>
+              <h6>Discount <span className='mx-5'>₹{totalOP-totalFP}</span></h6>
+              <h4>Total Price <span >₹{totalFP}</span></h4>
              </div>
           </div>
         ):(<div>EmptyCart</div>)}
