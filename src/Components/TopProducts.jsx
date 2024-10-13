@@ -34,6 +34,7 @@ const TopProducts = () => {
     const buttonClass=(productCategory)=>{
         return category===productCategory ? "btn active" :"btn"
     }
+
   return (
     <>
     {products.length>0?(
@@ -46,7 +47,7 @@ const TopProducts = () => {
                 <button className={buttonClass('Earphones')} onClick={() => handleCategory('Earphones')}>Earphones</button>
                 <button className={buttonClass('Neckbands')} onClick={() => handleCategory('Neckbands')}>Neckbands</button>
             </div>
-            <div >
+            <div>
          <div className="row my-5">
              {products.map((product) => (
                  <div className="col-md-3 mb-4" key={product.id}>

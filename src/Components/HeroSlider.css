@@ -89,3 +89,8 @@
     background-color: rgb(201, 16, 16);
     border: none;
 }
+
+.information-buttons .btn.active{
+    background-color: rgb(201, 16, 16);
+    border: none;
+}
