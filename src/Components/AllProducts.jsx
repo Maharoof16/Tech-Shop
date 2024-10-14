@@ -12,6 +12,7 @@ const AllProducts = () => {
     const [selectedBrand, setBrands] = useState([]);
     const [selectedCategory,setCategories]=useState([]);
     const[priceRange,setRange]=useState(19990);
+    const[sortBy,setSortBy]=useState('')
     const dispatch=useDispatch();
 
     const handleBrand = (brand) => {
@@ -30,6 +31,10 @@ const AllProducts = () => {
         setRange(Number(e.target.value));
     };
 
+    const handleSort=(sortType)=>{
+        setSortBy(sortType);
+    };
+
     useEffect(() => {
         let filteredProducts = allProducts;
         if (selectedBrand.length > 0) {
@@ -44,9 +49,19 @@ const AllProducts = () => {
             );
         }
         
-       filteredProducts=filteredProducts.filter((product)=>product.finalPrice<=priceRange)
+       filteredProducts=filteredProducts.filter((product)=>product.finalPrice<=priceRange);
+
+       if (sortBy === 'Price(Lowest First)') {
+        filteredProducts.sort((prev,next) => prev.finalPrice - next.finalPrice);
+    } else if (sortBy === 'Price(Highest First)') {
+        filteredProducts.sort((prev,next) => next.finalPrice - prev.finalPrice);
+    } else if (sortBy === 'Top Rated') {
+        filteredProducts.sort((prev,next) => next.rateCount - prev.rateCount);
+    }else if(sortBy === 'Featured'){
+        filteredProducts=filteredProducts.filter(item=>item.tag === 'featured-product');
+    }
         setProducts(filteredProducts);
-    }, [allProducts,selectedBrand, selectedCategory,priceRange]);
+    }, [allProducts,selectedBrand, selectedCategory,priceRange,sortBy]);
     
 
 
@@ -59,7 +74,7 @@ const AllProducts = () => {
               <div className="bg-dark text-light p-3 overflow-auto" style={{ maxHeight: "100vh" }}>
               <h3 className="text-white">Sort By</h3>
               {filterData.sortMenu.map((item)=>(
-                <h6 style={{fontWeight:'lighter'}}>{item.title}</h6>
+                <p className='text-white' style={{cursor:'pointer'}} onClick={()=>handleSort(item.title)}>{item.title}</p>
               ))}
         <h4>Filter By</h4>
         <h5 className="text-white">Brands</h5>

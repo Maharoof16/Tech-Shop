@@ -32,26 +32,33 @@ const TopProducts = () => {
     };
 
     const buttonClass=(productCategory)=>{
-        return category===productCategory ? "btn active" :"btn"
+        return category===productCategory ? "btn active " :"btn px-3 mx-3"
     }
 
   return (
     <>
     {products.length>0?(
         <div className="container-fluid bg-black p-5 text-white">
-            <h2 className='text-center my-5 p-5'>Top Products</h2>
-            <div className="filter-buttons d-flex justify-content-between" style={{maxWidth:"60%",margin:"auto"}}>
+            <div className="row">
+            <h2 className='text-center p-5  my-5'>Top Products</h2>
+                <div className="row">
+                <div className="filter-buttons d-flex justify-content-center flex-column flex-md-row">
                 <button className={buttonClass('Top-Products')} onClick={() => handleCategory('Top-Products')}>All</button>
                 <button className={buttonClass('Headphones')} onClick={() => handleCategory('Headphones')}>Headphones</button>
                 <button className={buttonClass('Earbuds')} onClick={() => handleCategory('Earbuds')}>Earbuds</button>
                 <button className={buttonClass('Earphones')} onClick={() => handleCategory('Earphones')}>Earphones</button>
                 <button className={buttonClass('Neckbands')} onClick={() => handleCategory('Neckbands')}>Neckbands</button>
+                </div>
+                </div>
+                
             </div>
-            <div>
+            
+            
+            
          <div className="row my-5">
              {products.map((product) => (
                  <div className="col-md-3 mb-4" key={product.id}>
-                     <div className="card bg-black text-white border-secondary" >
+                     <div className="card bg-black text-white border-secondary" style={{minHeight:'100%'}}>
                         <Link to={`/products/${product.id}`}>
                               <img src={require(`${product.images[0]}`)}  className="card-img-top p-3" style={{backgroundColor:"#121212"}} 
                                         alt={product.title} />
@@ -68,15 +75,15 @@ const TopProducts = () => {
              ))}
              {products.length>0?(
                 <div className="col-md-3 mb-4">
-                <Link to="/all-products" className="card text-center bg-black text-white border-secondary" > 
-                    <div className="card-body">
+                <Link to="/all-products" className="card bg-black text-white border-secondary " style={{minHeight:'100%'}}> 
+                    <div className="card-body d-flex flex-column align-items-center justify-content-center">
                         <h5 className="card-title">Browse All Products</h5>
                     </div>
                     </Link>
             </div>
               ):(<div></div>)}
              </div>
-         </div>
+         
      </div>):(<div></div>)}
         
          

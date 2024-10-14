@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import productsData from '../Assets/json/Products.json';
-import './HeroSlider.css';
+import { Link } from 'react-router-dom';
 
 const FeaturedProducts = () => {
     const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -29,47 +29,48 @@ const FeaturedProducts = () => {
                 <div className='container-fluid my-5'>
                     <h2 className='text-center p-5'>Featured Products</h2>
                     <div className="row my-5">
-                        <div className="col-md-2 my-5 text-center ">
-                            <p >{featuredProducts[leftCornerIndex].title}</p>
-                            <img src={require(`${featuredProducts[leftCornerIndex].images[0]}`)} alt={featuredProducts[leftCornerIndex].title} style={{ width: "80%", height: "auto" }} />
-                            <h5 >₹{featuredProducts[leftCornerIndex].finalPrice} <strike>₹{featuredProducts[leftCornerIndex].originalPrice}</strike></h5>
-                        </div>
-                        <div className="col-md-2 my-3 text-center ">
-                            <p >{featuredProducts[leftIndex].title}</p>
-                            <img src={require(`${featuredProducts[leftIndex].images[0]}`)} alt={featuredProducts[leftIndex].title} style={{ width: "100%", height: "auto" }} />
-                            <h5 >₹{featuredProducts[leftIndex].finalPrice} <strike>₹{featuredProducts[leftIndex].originalPrice}</strike></h5>
-                        </div>
-                        <div className="col-md-4 d-flex justify-content-center ">
-                            <div className="text-center">
-                                <p>{featuredProducts[currentIndex].title}</p>
-                                <img src={require(`${featuredProducts[currentIndex].images[0]}`)} alt={featuredProducts[currentIndex].title} style={{ width: "60%", height: "auto" }} />
-                                <h5 >₹{featuredProducts[currentIndex].finalPrice} <strike>₹{featuredProducts[currentIndex].originalPrice}</strike></h5>
-                            </div>
-                        </div>
-                        <div className="col-md-2 my-3 text-center ">
-                            <p >{featuredProducts[rightIndex].title}</p>
-                            <img src={require(`${featuredProducts[rightIndex].images[0]}`)} alt={featuredProducts[rightIndex].title} style={{ width: "100%", height: "auto" }} />
-                            <h5>₹{featuredProducts[rightIndex].finalPrice} <strike>₹{featuredProducts[rightIndex].originalPrice}</strike></h5>
-                        </div>
-                        <div className="col-md-2 my-5 text-center">
-                            <p >{featuredProducts[rightCornerIndex].title}</p>
-                            <img src={require(`${featuredProducts[rightCornerIndex].images[0]}`)} alt={featuredProducts[rightCornerIndex].title} style={{ width: "80%", height: "auto" }} />
-                            <h5 >₹{featuredProducts[rightCornerIndex].finalPrice} <strike>₹{featuredProducts[rightCornerIndex].originalPrice}</strike></h5>
-                        </div>
+                        { [leftCornerIndex, leftIndex, currentIndex, rightIndex, rightCornerIndex].map((index, i) => {
+                            let scale = 0.8; // default scale for corners
+                            if (i === 1 || i === 3) scale = 1.0; // scale for left and right
+                            if (i === 2) scale = 0.8; // scale for center
+                            
+                            return (
+                                <div key={index} className={`col-md-${i === 2 ? '4' : '2'} my-${i === 2 ? '2' : i===1 || i===3 ? '5':'5'} py-${i === 2 ? '1' : i===1 || i===3 ? '4':'5'} text-center`}>
+                                    <p>{featuredProducts[index].title}</p>
+                                    <Link to={`/products/${featuredProducts[index].id}`}>
+                                        <img 
+                                            src={require(`${featuredProducts[index].images[0]}`)} 
+                                            alt={featuredProducts[index].title} 
+                                            style={{ 
+                                                width: '80%', 
+                                                height: 'auto', 
+                                                transform: `scale(${scale})`, // Apply scale based on position
+                                                transition: 'transform 0.3s ease-in-out'
+                                            }} 
+                                        />
+                                    </Link>
+                                    <h6 className='p-4'>₹{featuredProducts[index].finalPrice} 
+                                        <strike className='text-secondary mx-2'>₹{featuredProducts[index].originalPrice}</strike>
+                                    </h6>
+                                </div>
+                            );
+                        }) }
                     </div>
                     <div className='dynamic-sliders bg-black p-5'>
-                        {featuredProducts.map((product,index)=>(
-                            <button className={`rounded-circle ${currentIndex===index ? 'active':''}`} key={product.id} onClick={()=>setCurrentIndex(index)}></button>
+                        {featuredProducts.map((product, index) => (
+                            <button 
+                                className={`rounded-circle ${currentIndex === index ? 'active' : ''}`} 
+                                key={product.id} 
+                                onClick={() => setCurrentIndex(index)}
+                            ></button>
                         ))}
                     </div>
                 </div>
-                
             ) : (
                 <div>Loading...</div>
             )}
-           
         </div>
-    )
-}
+    );
+};
 
 export default FeaturedProducts;
