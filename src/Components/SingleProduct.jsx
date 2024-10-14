@@ -127,7 +127,7 @@ const SingleProduct = () => {
                 <div >
                     <h3>₹{product.finalPrice} <strike className='text-secondary h4'>₹{product.originalPrice}</strike></h3>
                     <div >
-                        <p>You save: <span className='text-success'>₹{discount} ({discountPercentile}%)</span></p>
+                        <p className='text text-success'>You save: ₹{discount} ({discountPercentile}%)</p>
                     </div>
                     <p>(Inclusive of all taxes)</p>
                 </div>
@@ -135,10 +135,10 @@ const SingleProduct = () => {
                 <div>
                     <h5>Offers and Discounts</h5>
                     <button className='btn btn-dark'>No Cost EMI on Credit Card</button>
-                    <button className='btn btn-dark'>Pay Later & Avail Cashback</button>
+                    <button className='btn btn-dark mx-3'>Pay Later & Avail Cashback</button>
                 </div>
                 <hr/>
-                <button className='btn px-3'  style={{color:'white',backgroundColor:'red'}}>Add to cart</button>
+                <button className='btn px-3'  style={{color:'white',backgroundColor:'red'}} onClick={()=>dispatch(addToCart(product))}>Add to cart</button>
                 </div>
             </div>
 

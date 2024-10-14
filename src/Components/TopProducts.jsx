@@ -67,7 +67,7 @@ const TopProducts = () => {
                              <h5 className="card-title">{product.title}</h5>
                              <p>{product.info}</p>
                              <hr />
-                            <h6 className='pb-2'>₹{product.finalPrice}<strike className='px-2'>₹{product.originalPrice}</strike></h6>
+                            <h6 className='pb-2'>₹{product.finalPrice}<strike className='px-2 text-secondary'>₹{product.originalPrice}</strike></h6>
                             <button className= "btn text-white " style={{backgroundColor:"red",width:"100%"}}  onClick={()=>dispatch(addToCart(product))}>Add to cart</button>
                          </div>
                      </div>

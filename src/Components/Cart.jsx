@@ -14,9 +14,6 @@ const Cart = () => {
   const count=useSelector(cartCount);
   const totalFP=useSelector(totalFinalPrice)
 
-  const getImageSrc=(imagePath)=>{
-    return require(`${imagePath}`);
-  };
   return (
     <div className='container-fluid bg-black text-white p-5' style={{minHeight:'100vh'}}>
         {cart_data.length>0?(
@@ -25,15 +22,15 @@ const Cart = () => {
             {cart_data.map((product)=>(
                 <div className="row mt-5">
                   <div className="col-md-4">
-                    <img src={getImageSrc(product.images[0])} alt={product.title} className='img-thumbnail' style={{backgroundColor:"#121212",border:"none"}} />
+                    <img src={require(`${(product.images[0])}`)} alt={product.title} className='img-thumbnail' style={{backgroundColor:"#121212",border:"none"}} />
                   </div>
                   <div className="col-md-8">
                     <div className="d-flex">
                     <p style={{fontSize:"large"}}>{product.title} {product.info}</p> 
                     <span  className='mx-5' onClick={()=>dispatch(removeFromCart(product.id))}><FontAwesomeIcon icon={faTrashCan} /></span>
                     </div>
-                    <h5>₹{product.finalPrice}<strike> ₹{product.originalPrice}</strike></h5>
-                    <div className="d-flex border border-secondary" style={{maxWidth:'fit-content'}}> 
+                    <h5>₹{product.finalPrice}<strike className='text-secondary mx-3 h6'> ₹{product.originalPrice}</strike></h5>
+                    <div className="d-flex border border-secondary my-3" style={{maxWidth:'fit-content'}}> 
                       <button className='btn increment text-white' onClick={()=>dispatch(incrementQuantity(product.id))}><FontAwesomeIcon icon={faPlus}/></button>
                       <p className='text-danger h4'>{product.quantity}</p>
                       <button className='btn deccrement text-white' onClick={()=>dispatch(decrementQuantity(product.id))}><FontAwesomeIcon icon={faMinus} /></button>
@@ -42,31 +39,33 @@ const Cart = () => {
                 </div>
               ))}
              </div>
-             <div className="col-md-4 ">
-              <h4 className='p-3'>Order Summary ({count})</h4>
-              <div className="originalprice d-flex justify-content-between p-3">
-              <h5>Original Price</h5>
-              <h5>₹{totalOP}</h5>
-              </div>
-              
-              <div className="discount d-flex justify-content-between p-3">
-              <h5>Discount </h5>
-              <h5 className='text-success'>₹{totalOP-totalFP}</h5>
-              </div>
-              
-              <div className='delivery d-flex justify-content-between p-3'>
-                <h5>Delivery</h5>
-                <h5 className='text-success'>Free</h5>
-              </div>
-              <div className="finalprice d-flex justify-content-between p-3">
-              <h4>Total Price</h4>
-              <h4>₹{totalFP}</h4>
+             <div className="col-md-5 px-5">
+             <h4 className=''>Order Summary ({count})</h4>
+              <div className="row" style={{color:'lightgrey'}}>
+              <div className="d-flex justify-content-between my-3">
+              <h6>Original Price</h6>
+              <h6>₹{totalOP}</h6>
               </div>
 
-              <div className='p-3'>
+              <div className="d-flex justify-content-between">
+              <h6>Discount </h6>
+              <h6 className='text-success'>₹{totalOP-totalFP}</h6>
+              </div>
+
+              <div className='d-flex justify-content-between border-bottom py-3'>
+                <h6>Delivery</h6>
+                <h6 className='text-success'>Free</h6>
+              </div>
+
+              <div className="d-flex justify-content-between my-5">
+              <h5>Total Price</h5>
+              <h5>₹{totalFP}</h5>
+              </div>
+
+              <div className=''>
               <button className='btn' style={{backgroundColor:'red',color:'white',width:'100%',fontSize:'large'}}>Checkout</button>
               </div>
-
+              </div>
              </div>
           </div>
         ):(<div className='row p-5 my-5'>

@@ -94,3 +94,13 @@
     background-color: rgb(201, 16, 16);
     border: none;
 }
+
+.card{
+    transition: transform 0.3 ease;
+    overflow: hidden;
+}
+
+.card img:hover{
+    transform: scale(1.1);
+    background-color: none;
+}
