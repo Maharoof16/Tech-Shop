@@ -1,5 +1,6 @@
 const initialState={
     cartData: JSON.parse(localStorage.getItem('cartData')) || [],
+    
 };
 
 export const Reducer=(state=initialState,action)=>{

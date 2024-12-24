@@ -15,7 +15,7 @@ const Routing = () => {
       <Route path="/" element={<Home/>}/>
       <Route path="/cart" element={<ProductCart/>}/>
       <Route path="/products/:id" element={<SpecificProduct/>}/> 
-      <Route path="/all-products" element={<FilterProducts/>}/>
+      <Route path="/all-products" Component={FilterProducts}/>
     </Routes>
     </>
      
