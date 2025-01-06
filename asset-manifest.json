@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Tech-Shop/static/css/main.2256e866.css",
-    "main.js": "/Tech-Shop/static/js/main.d3c11bb0.js",
+    "main.css": "/Tech-Shop/static/css/main.384b3ff3.css",
+    "main.js": "/Tech-Shop/static/js/main.ca6e0b2f.js",
     "static/media/boat381-3.png": "/Tech-Shop/static/media/boat381-3.96ae34e020040ced98fd.png",
     "static/media/jbl660nc-1.png": "/Tech-Shop/static/media/jbl660nc-1.4aa5ade12591d3d45e65.png",
     "static/media/jbl760nc-1.png": "/Tech-Shop/static/media/jbl760nc-1.7b087e2bf8f93d85127e.png",
@@ -79,11 +79,11 @@
     "static/media/sonyXb400-3.png": "/Tech-Shop/static/media/sonyXb400-3.e9778b038abc7f44c02f.png",
     "static/media/sony-ex14ap-4.png": "/Tech-Shop/static/media/sony-ex14ap-4.617fc6bc20205aed8278.png",
     "index.html": "/Tech-Shop/index.html",
-    "main.2256e866.css.map": "/Tech-Shop/static/css/main.2256e866.css.map",
-    "main.d3c11bb0.js.map": "/Tech-Shop/static/js/main.d3c11bb0.js.map"
+    "main.384b3ff3.css.map": "/Tech-Shop/static/css/main.384b3ff3.css.map",
+    "main.ca6e0b2f.js.map": "/Tech-Shop/static/js/main.ca6e0b2f.js.map"
   },
   "entrypoints": [
-    "static/css/main.2256e866.css",
-    "static/js/main.d3c11bb0.js"
+    "static/css/main.384b3ff3.css",
+    "static/js/main.ca6e0b2f.js"
   ]
 }
