@@ -4,6 +4,7 @@ import { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {useDispatch} from "react-redux";
 import { addToCart } from '../Redux/ActionCreator';
+import LoginModal from './Header/LoginModal';
 
 const TopProducts = () => {
     const [products,setProducts]=useState([]);

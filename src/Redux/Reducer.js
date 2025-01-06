@@ -1,5 +1,6 @@
 const initialState={
     cartData: JSON.parse(localStorage.getItem('cartData')) || [],
+    isLoggedIn: false,
     
 };
 
@@ -56,7 +57,6 @@ export const Reducer=(state=initialState,action)=>{
             localStorage.setItem('cartData', JSON.stringify(decrement));
             return{...state,cartData:decrement};
                 
-
         default:
             return state;
     }

@@ -13,12 +13,12 @@ const HeroSlider = () => {
         setHeroproducts(filterHeroProducts);
     }, []);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentIndex(previousIndex => (previousIndex + 1) % heroProducts.length);
-        }, 5000); 
-        return () => clearInterval(interval); 
-    }, [heroProducts.length]);
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         setCurrentIndex(previousIndex => (previousIndex + 1) % heroProducts.length);
+    //     }, 5000); 
+    //     return () => clearInterval(interval); 
+    // }, [heroProducts.length]);
 
     const handleSwipeLeft = () => {
         setCurrentIndex(previousIndex => (previousIndex === 0 ? heroProducts.length - 1 : previousIndex - 1));
@@ -37,37 +37,54 @@ const HeroSlider = () => {
     });
 
     return (
-        <div className="hero-section" {...swipeHandlers} >
-            {heroProducts.length > 0 ? (
-                <div className="container">
-                    <div className="slider-content my-5">
-                        <div className="slider-info " key={heroProducts[currentIndex].id}>
-                            <h5>{heroProducts[currentIndex].title}</h5>
-                            <h1>{heroProducts[currentIndex].tagline}</h1>
-                            <h3 className='background-text'>{heroProducts[currentIndex].type}</h3>
-                            <h4>₹{heroProducts[currentIndex].finalPrice}
-                                <strike>₹{heroProducts[currentIndex].originalPrice}</strike> 
-                            </h4>
-                            <Link to={`/products/${heroProducts[currentIndex].id}`}>
-                            <button className='hero-btn'>Shop Now</button>
-                            </Link>
-                            
-                        </div>
-                        <div className="slider-image ">
-                            <img src={require(`${heroProducts[currentIndex].heroImage}`)} alt={heroProducts[currentIndex].heroImage} className='img-fluid' />
-                        </div>
+       <div className="hero-section" {...swipeHandlers}>
+    {heroProducts.length > 0 ? (
+        <div className="container-fluid">
+            <div className="row">
+                <h4 className="background-text">{heroProducts[currentIndex].type}</h4>
+                <div className="col-12 py-5 col-md-1"></div>
+                <div className="col-12 col-md-4 slider-Details">
+                    <div className="slider-info " key={heroProducts[currentIndex].id}>
+                        <h5>{heroProducts[currentIndex].title}</h5>
+                        <h1>{heroProducts[currentIndex].tagline}</h1>
+                        <h4>
+                            ₹{heroProducts[currentIndex].finalPrice}
+                            <strike>₹{heroProducts[currentIndex].originalPrice}</strike>
+                        </h4>
+                        <button className="hero-btn">Shop Now</button>
                     </div>
-                    
                 </div>
-            ) : (
-                <div>Loading...</div>
-            )}
-            <div className='dynamic-sliders bg-black'>
-                        {heroProducts.map((product,index)=>(
-                            <button className={`rounded-circle ${currentIndex===index ? 'active':''}`} key={product.id} onClick={()=>setCurrentIndex(index)}></button>
-                        ))}
+
+                <div className="col-12 col-md-6">
+                    <div className="slider-image position-relative">
+                        <img
+                            className="img-fluid"
+                            src={require(`${heroProducts[currentIndex].heroImage}`)}
+                            alt={heroProducts[currentIndex].heroImage}
+                        />
+                    </div>
+                </div>
+
+                <div className="col-12 col-md-1"></div>
             </div>
         </div>
+    ) : (
+        <div>Loading...</div>
+    )}
+
+    <div className="dynamic-sliders bg-black">
+        {heroProducts.map((product, index) => (
+            <button
+                className={`rounded-circle ${currentIndex === index ? "active" : ""}`}
+                key={product.id}
+                onClick={() => setCurrentIndex(index)}
+            ></button>
+        ))}
+    </div>
+</div>
+
+
+        
     );
 };
 

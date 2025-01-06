@@ -13,6 +13,7 @@ const Header = () => {
   const count = useSelector(cartCount);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [user, setUser] = useState(null); 
 
   const handleSearchChange = (e) => {
     const value = e.target.value;
@@ -30,6 +31,11 @@ const Header = () => {
   const clearSearch = () => {
     setSearchTerm('');
     setFilteredProducts([]);
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem('user'); 
   };
 
   return (
@@ -58,14 +64,26 @@ const Header = () => {
               <li className="nav-item">
                 <OverlayTrigger placement="bottom-end" delay={{ show: 250, hide: 800 }} overlay={
                   <Tooltip id="user-tooltip">
-                    <div>
-                      <h5>Hello!</h5>
-                      <p>Access account and manage orders</p>
-                      <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Login/Signup</button>
-                      <hr />
-                      <p>Please Login</p>
-                    </div>
-                  </Tooltip>}>
+                    {user ? (
+                      <div>
+                        <h5>Hello, {user.firstName}</h5>
+                        <p>Access account and manage orders</p>
+                        <Link to="/orders" className="btn btn-primary">Your Orders</Link>
+                        <Link to="/wishlist" className="btn btn-secondary mt-2">Your Wishlist</Link>
+                        <hr />
+                        <button onClick={handleLogout} className="btn btn-danger mt-2">Logout</button>
+                      </div>
+                    ) : (
+                      <div>
+                        <h5>Hello!</h5>
+                        <p>Access account and manage orders</p>
+                        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Login/Signup</button>
+                        <hr />
+                        <p>Please Login</p>
+                      </div>
+                    )}
+                  </Tooltip>
+                }>
                   <FontAwesomeIcon icon={faUser} className="nav-link mx-3" />
                 </OverlayTrigger>
               </li>
@@ -78,8 +96,9 @@ const Header = () => {
         searchTerm={searchTerm}
         filteredProducts={filteredProducts}
         handleSearchChange={handleSearchChange}
-        clearSearch={clearSearch}/>
-      <LoginModal />
+        clearSearch={clearSearch}
+      />
+      <LoginModal setUser={setUser} />
     </>
   );
 };

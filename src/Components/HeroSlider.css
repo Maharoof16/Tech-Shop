@@ -1,60 +1,23 @@
-.hero-section {
-    width: 100%;
-    background-color: black;
+.hero-section{
     color: silver;
-    height: auto;
+    background-color: black;
     font-family: Arial, Helvetica, sans-serif;
     user-select: none;
 }
-
-.slider-content {
-    display: flex;
-    flex-direction: row; 
-        justify-content: space-between; 
-    align-items: center; 
-    width: 100%;
-    padding: 2% 1.5%; 
-}
-
-.background-text {
+.background-text{
+    font-size: 15vw;
     position: absolute;
+    top: 30vh;
+    opacity: 0.09;
     color: gray;
-    font-size: 10vw; 
-    opacity: 0.2;
     font-weight: bolder;
-    font-size: 13rem; 
-        top: 12rem;
-        left: 1rem;
 }
 
-.slider-info {
-    width: 100%;
-}
-
-.slider-info h1 {
-    font-weight: bolder;
-    font-size: 2.5rem; 
-}
-
-.slider-info strike {
-    padding: 2%; 
-    color: grey;
-    font-size: 2vw; 
-}
-
-.slider-image {
-    text-align: center;
-    z-index: 2;
-    pointer-events: none;
-}
-
-.slider-image img {
-    width: 100%; 
-    max-width: 90%; 
-    height: auto;
-}
-.slider-info h5 {
-    font-size: 1.5rem; 
+.slider-Details{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .hero-btn {
@@ -81,6 +44,22 @@
 .dynamic-sliders .rounded-circle.active {
     background-color: red;
 }
+
+@media (max-width:575px){
+    .slider-info h1{
+        font-weight: bolder;
+    }
+
+    .background-text{
+       font-size: 25vw;
+        position: absolute;
+        top: 30vh;
+        opacity: 0.2;
+        color: gray;
+        font-weight: bolder;
+    }
+}
+
 
 .filter-buttons .btn{
     color: white;
