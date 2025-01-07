@@ -16,10 +16,10 @@ const SearchModal = ({ searchTerm, filteredProducts, handleSearchChange, clearSe
           {filteredProducts.length > 0 && (
             <ul className="list-group mt-2">
               {filteredProducts.map(product => (
-                <Link to={`/products/${product.id}`} key={product.id}>
+                <Link to={`/products/${product.id}`} key={product.id} style={{textDecoration:"none"}}>
                   <li
                     className="list-group-item"
-                    style={{ backgroundColor: "#2c2c2c", color: "silver" }}
+                    style={{ backgroundColor: "#2c2c2c", color: "silver"}}
                     onClick={clearSearch}
                     data-bs-dismiss='modal'
                   >

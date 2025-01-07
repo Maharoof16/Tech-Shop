@@ -7,7 +7,7 @@
 .background-text{
     font-size: 15vw;
     position: absolute;
-    top: 30vh;
+    top: 32vh;
     opacity: 0.09;
     color: gray;
     font-weight: bolder;
@@ -16,8 +16,15 @@
 .slider-Details{
     display: flex;
     align-items: center;
-    justify-content: center;
     
+}
+.slider-info h1{
+    font-weight: bolder;
+}
+
+strike{
+    color: #333;
+    padding-left: 0.5rem;
 }
 
 .hero-btn {
@@ -46,20 +53,19 @@
 }
 
 @media (max-width:575px){
-    .slider-info h1{
-        font-weight: bolder;
+    
+    .background-text{
+       font-size: 30vw;
+        top: 50vh;
     }
 
-    .background-text{
-       font-size: 25vw;
-        position: absolute;
-        top: 30vh;
-        opacity: 0.2;
-        color: gray;
-        font-weight: bolder;
+    .dynamic-sliders .rounded-circle {
+        padding: 0.5rem;
+    }
+    .hero-btn {
+        font-size: 1.25rem; 
     }
 }
-
 
 .filter-buttons .btn{
     color: white;

@@ -69,7 +69,7 @@ const Footer = () => {
         <div className="col-md-8 my-5">
           <div className="row">
           {footerData.footMenu.map(section => (
-                        <div key={section.id} className="col-md-4 d-flex flex-column align-items-center">
+                        <div key={section.id} className="col-md-4 px-md-5">
                             <ul className="list-unstyled" >
                             <h6 className='text-white'>{section.title}</h6>
                             {section.menu.map(item => (
